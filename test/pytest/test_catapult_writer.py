@@ -1,4 +1,5 @@
 from pathlib import Path
+
 import pytest
 
 from hls4ml.writer.catapult_writer import CatapultWriter

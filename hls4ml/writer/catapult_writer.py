@@ -899,7 +899,7 @@ class CatapultWriter(Writer):
                 os.remove(tar_path)
             with tarfile.open(tar_path, mode='w:gz') as archive:
                 archive.add(model.config.get_output_dir(), recursive=True)
-        
+
 
     def write_hls(self, model):
         self.write_output_dir(model)
