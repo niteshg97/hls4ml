@@ -893,13 +893,12 @@ class CatapultWriter(Writer):
             model (ModelGraph): the hls4ml model.
         """
 
-       if model.config.get_writer_config().get('WriteTar', False):
+        if model.config.get_writer_config().get('WriteTar', False):
             tar_path = model.config.get_output_dir() + '.tar.gz'
             if os.path.exists(tar_path):
                 os.remove(tar_path)
             with tarfile.open(tar_path, mode='w:gz') as archive:
                 archive.add(model.config.get_output_dir(), recursive=True)
-
 
     def write_hls(self, model):
         self.write_output_dir(model)
