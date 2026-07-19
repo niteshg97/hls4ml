@@ -49,20 +49,22 @@ def get_global_input_shape(graph, inp):
 
 
 def get_input_shape(graph, node):
-    """Return the input shapes of the node in the model
+    """Return the non empty input shapes of the node in the model
 
     Arguments:
         graph:  the onnx graph
         node:  the onnx node for which the input is desired
 
     Returns:
-        list of lists: The shapes of all the inputs
+        list of lists: The shapes of all the non empty inputs
 
     Raises:
         StopIteration:  If the an input name is not found in the graph
     """
     rv = []
     for inp in node.input:
+        if not inp:
+            continue
         # first try regular variables
         vals = [x for x in graph.value_info if x.name == inp]
         if not vals:
